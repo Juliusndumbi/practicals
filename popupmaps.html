@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Universities in kenya and their county of location</title>
+	<link rel="stylesheet" href="style.css">
+<head>
+<body>
+<header>
+<h1> Universities in kenya and their county of location</h1>
+		<nav>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="about.html">About julius</a></li>
+				
+				
+				<li><a href="popupmaps.html">custom popups in map</a></li>
+				<li><a href="contact.html">contacts</a></li>
+               
+			</ul>
+		</nav>
+<head>
+<title>Universities in kenya and their county of location</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
+	<style>
+		#mapid {
+			height: 500px;
+			border: 2px solid #ccc;
+			border-radius: 5px;
+			margin: 10px;
+		}
+
+		#map-title {
+			background-color: #fff;
+			border: 2px solid #ccc;
+			border-top-left-radius: 5px;
+			border-top-right-radius: 5px;
+            margin: 0px;
+			padding: 10px;
+			font-size: 24px;
+			font-weight: bold;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div id="map-container">
+		<div id="map-title">Universities in kenya and their county of location</div>
+		<div id="mapid"></div>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+	<script>
+		// create a Leaflet map centered at Nairobi, Kenya
+		var map = L.map('mapid').setView([-1.2921, 36.8219], 7);
+
+		// add an OpenStreetMap tile layer
+		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			maxZoom: 19,
+			attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+		}).addTo(map);
+// define an array of universities in Kenya with their names and locations
+var universities = [
+  {
+    name: "University of Nairobi",
+    latitude: -1.260389,
+    longitude: 36.804998,
+    county: "Nairobi County"
+  },
+  {
+    name: "Kenyatta University",
+    latitude: -1.1965,
+    longitude: 36.9621,
+    county: "Kiambu County"
+  },
+  {
+    name: "Strathmore University",
+    latitude: -1.3122,
+    longitude: 36.8131,
+    county: "Nairobi County"
+  },
+  {
+    name: "Jomo Kenyatta University of Agriculture and Technology",
+    latitude: -1.1427,
+    longitude: 36.9683,
+    county: "Kiambu County"
+  },
+  {
+    name: "Egerton University",
+    latitude: -0.3904,
+    longitude: 36.1355,
+    county: "Nakuru County"
+  },
+  {
+    name: "Maseno University",
+    latitude: 0.1511,
+    longitude: 34.4782,
+    county: "Kisumu County"
+  },
+  {
+    name: "Moi University",
+    latitude: 0.4659,
+    longitude: 35.2420,
+    county: "Uasin Gishu County"
+  },
+  {
+    name: "Kisii University",
+    latitude: -0.6850,
+    longitude: 34.7666,
+    county: "Kisii County"
+  }
+];
+
+// add markers to the map for each university
+for (var i = 0; i < universities.length; i++) {
+  var university = universities[i];
+  var marker = L.marker([university.latitude, university.longitude]).addTo(map);
+
+  // define a popup for each marker with the university name and county
+  var popupContent = "<b>" + university.name + "</b><br>" +
+                     university.county;
+  marker.bindPopup(popupContent);
+}
+	</script>
+</body>
+<footer>
+		<p>&copy; @julius ndumbi nduta</p>
+</html>
